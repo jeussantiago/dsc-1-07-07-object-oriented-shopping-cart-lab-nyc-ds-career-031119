@@ -26,11 +26,11 @@ class ShoppingCart():
 
     def median_item_price(self):
         if len(self.all_items_price) % 2: #odd
-            median_position = len(self.all_items_price) / 2
+            median_position = int(len(self.all_items_price) / 2)
             return self.all_items_price[median_position]
         else: #even
-            low_med_pos = len(self.all_items_price) / 2 - 1
-            upp_med_pos = len(self.all_items_price) / 2 
+            low_med_pos = int(len(self.all_items_price) / 2 - 1)
+            upp_med_pos = int(len(self.all_items_price) / 2 )
             return (self.all_items_price[low_med_pos] + self.all_items_price[upp_med_pos]) / 2
             
 
