@@ -11,6 +11,7 @@ class ShoppingCart:
         self.items.append(name)
         self.last_item_price = price
         self.last_item_quantity = quantity
+        
         total = price * quantity
         self.total += total
         return self.total
@@ -26,8 +27,8 @@ class ShoppingCart:
             return "sorry, there is no discount to apply to your cart :("
         else:
             discount = (100 - self.employee_discount) * 0.01
-            self.total = self.total * discount
-            return self.total
+            total_w_discount = self.total * discount
+            return total_w_discount
 
     def void_last_item(self):
         if len(self.items) < 1:
