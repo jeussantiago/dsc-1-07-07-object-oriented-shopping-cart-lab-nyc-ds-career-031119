@@ -4,6 +4,7 @@ class ShoppingCart():
         self.total = 0
         self.employee_discount = emp_discount
         self.items = []
+        self.all_items_price = []
         self.items_price = []
         self.items_quantity = []
 
@@ -13,6 +14,9 @@ class ShoppingCart():
         self.items_price.append(price)
         self.items_quantity.append(quantity)
         
+        for i in range(quantity):
+            self.all_itmes_price.append(price)
+        
         total = price * quantity
         self.total += total
         return self.total
@@ -21,7 +25,14 @@ class ShoppingCart():
         return self.total / sum(self.items_quantity)
 
     def median_item_price(self):
-        pass
+        if len(self.all_items_price) % 2: #odd
+            median_position = len(self.all_items_price) / 2
+            return self.all_items_price[median_position]
+        else: #even
+            low_med_pos = len(self.all_items_price) / 2 - 1
+            upp_med_pos = len(self.all_items_price) / 2 
+            return (self.all_items_price[low_med_pos] + self.all_items_price[upp_med_pos]) / 2
+            
 
     def apply_discount(self):
         if not self.employee_discount:
