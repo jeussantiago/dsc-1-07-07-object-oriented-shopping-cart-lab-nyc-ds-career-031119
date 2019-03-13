@@ -15,7 +15,7 @@ class ShoppingCart():
         self.items_quantity.append(quantity)
         
         for i in range(quantity):
-            self.all_itmes_price.append(price)
+            self.all_items_price.append(price)
         
         total = price * quantity
         self.total += total
