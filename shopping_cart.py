@@ -1,23 +1,24 @@
-class ShoppingCart:
+class ShoppingCart():
     # write your code here
     def __init__(self, emp_discount=None):
         self.total = 0
         self.employee_discount = emp_discount
         self.items = []
-        self.last_item_quantity = 0
-        self.last_item_price = 0.0
+        self.items_price = []
+        self.items_quantity = []
+
         
     def add_item(self, name, price, quantity=1):
         self.items.append(name)
-        self.last_item_price = price
-        self.last_item_quantity = quantity
+        self.items_price.append(price)
+        self.items_quantity.append(quantity)
         
         total = price * quantity
         self.total += total
         return self.total
    
     def mean_item_price(self):
-        return self.total / len(self.items)
+        return self.total / sum(self.items_quantity)
 
     def median_item_price(self):
         pass
@@ -34,6 +35,7 @@ class ShoppingCart:
         if len(self.items) < 1:
             return "There are no items in your cart!"
         else:
-            total = self.last_item_price * self.last_item_quantity
-            self.total = self.total - total
+            total = self.items_price.pop() * self.items_quantity.pop()
+            self.total -= total
             self.items.pop()
+            
